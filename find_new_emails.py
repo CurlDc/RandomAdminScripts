@@ -14,6 +14,9 @@ if __name__ == '__main__':
     cm_emails = pandas.read_csv(args.curling_manager_input).Email
     gg_emails = pandas.read_csv(args.google_group_input)['Email address']
 
+    cm_emails = map(str.lower, cm_emails)
+    gg_emails = map(str.lower, gg_emails)
+
     print('New emails to add to google group:')
     for email in set(cm_emails).difference(gg_emails):
         print(f'\t{email}')
